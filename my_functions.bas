@@ -373,3 +373,26 @@ Function tablize(arr, rng)
 dim1:
     rng.Resize(1, UBound(arr) + 1) = arr
 End Function
+
+'############################################################################################
+'2018/9/14
+'根据指定条件，找出某区域内所有符合条件的单元格值，并以分隔符号分割，返回一个单元格
+'@param range: 条件所在的Excel区域
+'@param criteria: 条件表达式
+'@param join_range: 需要组合的Excel区域
+'@param sep: 分隔符号，默认,
+'@return: 单元格值,单元格值,单元格值...
+Function joinif(range As range, ByRef criteria As String, join_range As range, Optional sep As String = ",")
+    Dim r
+    Dim result As String
+    Dim arr1, arr2
+    arr1 = range
+    arr2 = join_range
+    For r = 1 To Application.Min(UBound(arr1), Sheets(range.Parent.Name).UsedRange.Rows.Count)  '暂时只优化至最小行数
+        If arr1(r, 1) = criteria Then
+            result = result & arr2(r, 1) & sep
+        End If
+    Next
+    If Right(result, 1) = sep Then result = Left(result, Len(result) - 1)
+    joinif = result
+End Function
