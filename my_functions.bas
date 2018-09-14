@@ -389,7 +389,7 @@ Function joinif(range As range, ByRef criteria As String, join_range As range, O
     arr1 = range
     arr2 = join_range
     For r = 1 To Application.Min(UBound(arr1), Sheets(range.Parent.Name).UsedRange.Rows.Count)  '暂时只优化至最小行数
-        If arr1(r, 1) = criteria Then
+        If arr2(r, 1) <> "" And arr1(r, 1) = criteria Then
             result = result & arr2(r, 1) & sep
         End If
     Next
