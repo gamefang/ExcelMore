@@ -91,12 +91,26 @@ Function h2s(str As String, Optional pre_acc As String = "<font color='#ffcc33' 
 End Function
 
 '############################################################################################
-'2017/9/6，将选定区域合并为字符串，目前仅支持row变为n+n型
-Function join(sel As Range, Optional ByVal sign As String = ",") As String
+'2017/9/6，将选定区域合并为字符串，2018/10/12可反向连接
+'@param sel: range区域
+'@param sign: 连接符，默认,
+'@param reverse: 是否反向连接，默认False
+'@return: 连接后的字符串
+Function join(sel As range, Optional ByVal sign As String = ",", Optional ByVal reverse As Boolean = False) As String
     For Each i In sel
-        If i <> "" Then join = join & i & sign  '2018/8/22 添加空单元格不计算的逻辑
+        If i <> "" Then  '2018/8/22 添加空单元格不计算的逻辑
+            If reverse Then
+                join = sign & i & join
+            Else
+                join = join & i & sign
+            End If
+        End If
     Next
-    join = Left(join, Len(join) - Len(sign))
+    If reverse Then
+        join = Right(join, Len(join) - Len(sign))
+    Else
+        join = Left(join, Len(join) - Len(sign))
+    End If
 End Function
 
 '############################################################################################
