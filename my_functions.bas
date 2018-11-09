@@ -1,24 +1,24 @@
-Attribute VB_Name = "Ô­´´"
-'############################################################################################test
-'2017/8/1£¬zc£¬½öÓÃÓÚ´ò¿ªÍ¼±êÎÄ¼ş
+Attribute VB_Name = "åŸåˆ›"
+'############################################################################################
+'2017/8/1ï¼Œzcï¼Œä»…ç”¨äºæ‰“å¼€å›¾æ ‡æ–‡ä»¶
 Sub FileOpen()
-    If ActiveCell.Value Like "*.*" Then    '´ò¿ªÍ¼±êÎÄ¼ş
-        Const targetpath = "src\fbclient\resfile\ui\images\" 'ĞèÒª´ò¿ªÎÄ¼şµÄÄ¿Â¼£¬ÉÏ¼¶Ä¿Â¼project
+    If ActiveCell.Value Like "*.*" Then    'æ‰“å¼€å›¾æ ‡æ–‡ä»¶
+        Const targetpath = "src\fbclient\resfile\ui\images\" 'éœ€è¦æ‰“å¼€æ–‡ä»¶çš„ç›®å½•ï¼Œä¸Šçº§ç›®å½•project
         Dim fulpath As String, filename As String
-        fullpath = Split(ActiveWorkbook.Path, "design") 'ÒÔexcelËùÔÚdesignÄ¿Â¼È·¶¨ÏîÄ¿Â·¾¶
+        fullpath = Split(ActiveWorkbook.Path, "design") 'ä»¥excelæ‰€åœ¨designç›®å½•ç¡®å®šé¡¹ç›®è·¯å¾„
         filename = fullpath(0) & targetpath & ActiveCell.Value
         Shell "cmd.exe /c" & filename
     End If
 End Sub
 
 '############################################################################################
-'2017/8/4£¬zc£¬ÓÃÓÚÅäÖÃhtmlÓï¾äÊä³ö¡£
-'Ã¿¾äÊ¹ÓÃ"|"·Ö¸ô£¬Ç¿µ÷´¦Ê¹ÓÃ"{"Óë"}"°üº¬¡£
-'Ô´×Ö·û´®ÄÚÈİ²»¿É°üº¬"|"¡¢"{"¡¢"}"¡£
-'²ÎÊı1  str Ô´×Ö·û´®
-'²ÎÊı2  before  Ã¿¾äÇ°ÄÚÈİ£¬Í¨³£±íÊ¾¼Óµã£¬Ä¬ÈÏ¼Ó"<img src='img://Uiicon_zhuangbeitip_dian.png'>"
-'²ÎÊı3  accent_style    Ç¿µ÷ÄÚÈİ×ÖÌåĞÎÊ½£¬¸ñÊ½"ÑÕÉ«+×ÖºÅ"£¬¿ÉÊ¡ÂÔ×ÖºÅ£¬Ä¬ÈÏ"#ffcc33+12"
-'²ÎÊı4  normal_style    ÆÕÍ¨ÄÚÈİ×ÖÌåĞÎÊ½£¬¸ñÊ½"ÑÕÉ«+×ÖºÅ"£¬¿ÉÊ¡ÂÔ×ÖºÅ£¬Ä¬ÈÏ"#e5d2ac"
+'2017/8/4ï¼Œzcï¼Œç”¨äºé…ç½®htmlè¯­å¥è¾“å‡ºã€‚
+'æ¯å¥ä½¿ç”¨"|"åˆ†éš”ï¼Œå¼ºè°ƒå¤„ä½¿ç”¨"{"ä¸"}"åŒ…å«ã€‚
+'æºå­—ç¬¦ä¸²å†…å®¹ä¸å¯åŒ…å«"|"ã€"{"ã€"}"ã€‚
+'å‚æ•°1  str æºå­—ç¬¦ä¸²
+'å‚æ•°2  before  æ¯å¥å‰å†…å®¹ï¼Œé€šå¸¸è¡¨ç¤ºåŠ ç‚¹ï¼Œé»˜è®¤åŠ "<img src='img://Uiicon_zhuangbeitip_dian.png'>"
+'å‚æ•°3  accent_style    å¼ºè°ƒå†…å®¹å­—ä½“å½¢å¼ï¼Œæ ¼å¼"é¢œè‰²+å­—å·"ï¼Œå¯çœç•¥å­—å·ï¼Œé»˜è®¤"#ffcc33+12"
+'å‚æ•°4  normal_style    æ™®é€šå†…å®¹å­—ä½“å½¢å¼ï¼Œæ ¼å¼"é¢œè‰²+å­—å·"ï¼Œå¯çœç•¥å­—å·ï¼Œé»˜è®¤"#e5d2ac"
 Function html( _
     str As String, _
     Optional before As String = "<img src='img://Uiicon_zhuangbeitip_dian.png'>", _
@@ -29,76 +29,76 @@ Function html( _
     Dim content
     Dim i As Byte, line As String
     
-    pre_nor = get_pre(normal_style) 'µÃµ½ÆÕÍ¨×ÖÌåhtml
+    pre_nor = get_pre(normal_style) 'å¾—åˆ°æ™®é€šå­—ä½“html
     suf_nor = "</font>"
-    pre_acc = get_pre(accent_style) 'µÃµ½Ç¿µ÷×ÖÌåhtml
+    pre_acc = get_pre(accent_style) 'å¾—åˆ°å¼ºè°ƒå­—ä½“html
     suf_acc = "</font>"
     
-    content = Split(str, "|")   '×Ö·û´®×é
+    content = Split(str, "|")   'å­—ç¬¦ä¸²ç»„
     For i = 0 To UBound(content)
-        line = content(i)   'È¡×Ö·û´®×éÏî
-        line = Replace(line, "{", pre_acc)  'Ìæ»»Ç¿µ÷Ç°×º
-        line = Replace(line, "}", suf_acc)  'Ìæ»»Ç¿µ÷ºó×º
-        line = before & pre_nor & line & suf_nor & "<br>" 'Á¬½ÓÇ°×º£¨µãÍ¼Æ¬£©¼°»»ĞĞ£¬²¢À©ÆğÆÕÍ¨×ÖÌå
-        html = html & line  '¸üĞÂ·µ»ØÖµ
+        line = content(i)   'å–å­—ç¬¦ä¸²ç»„é¡¹
+        line = Replace(line, "{", pre_acc)  'æ›¿æ¢å¼ºè°ƒå‰ç¼€
+        line = Replace(line, "}", suf_acc)  'æ›¿æ¢å¼ºè°ƒåç¼€
+        line = before & pre_nor & line & suf_nor & "<br>" 'è¿æ¥å‰ç¼€ï¼ˆç‚¹å›¾ç‰‡ï¼‰åŠæ¢è¡Œï¼Œå¹¶æ‰©èµ·æ™®é€šå­—ä½“
+        html = html & line  'æ›´æ–°è¿”å›å€¼
     Next
     
 End Function
 
-'ÓÉhtmlº¯Êıµ÷ÓÃ£¬¼ÆËãhtmlÊä³ö£¬·Ö¸ô·ûÎª"+"¡£
+'ç”±htmlå‡½æ•°è°ƒç”¨ï¼Œè®¡ç®—htmlè¾“å‡ºï¼Œåˆ†éš”ç¬¦ä¸º"+"ã€‚
 Private Function get_pre(str As String) As String
     Dim tmp
     tmp = Split(str, "+")
-    If UBound(tmp) = 0 Then '½öÖ¸¶¨ÑÕÉ«£¨1¸öÔªËØ£©
+    If UBound(tmp) = 0 Then 'ä»…æŒ‡å®šé¢œè‰²ï¼ˆ1ä¸ªå…ƒç´ ï¼‰
         get_pre = "<font color='" & tmp(0) & "'>"
-    ElseIf UBound(tmp) = 1 Then 'Ö¸¶¨ÁËÑÕÉ«ºÍ×ÖÌå´óĞ¡
+    ElseIf UBound(tmp) = 1 Then 'æŒ‡å®šäº†é¢œè‰²å’Œå­—ä½“å¤§å°
         get_pre = "<font color='" & tmp(0) & "' size='" & tmp(1) & "'>"
     Else
-        MsgBox UBound(tmp) & "ÅäÖÃ´íÎó£¡"
+        MsgBox UBound(tmp) & "é…ç½®é”™è¯¯ï¼"
     End If
 End Function
 
-'2017/8/4£¬zc£¬html·´º¯Êı£¬ÓÃÓÚ½«htmlÓï¾ä»¹Ô­»Ø¿ÉÊÓ»¯Óï¾ä¡£
-'ÅäÖÃpre_acc¿ÉÖ¸¶¨Ç¿µ÷Ç°×º£¬±ØĞëÎªÍêÕû<>ÄÚÈİ¡£Ç¿µ÷½áÊø·û»á×Ô¶¯²¹Æë¡£
-'ÅäÖÃendl¿ÉÖ¸¶¨»»ĞĞ·û£¬Ò»°ãÎª<br>¡£
+'2017/8/4ï¼Œzcï¼Œhtmlåå‡½æ•°ï¼Œç”¨äºå°†htmlè¯­å¥è¿˜åŸå›å¯è§†åŒ–è¯­å¥ã€‚
+'é…ç½®pre_accå¯æŒ‡å®šå¼ºè°ƒå‰ç¼€ï¼Œå¿…é¡»ä¸ºå®Œæ•´<>å†…å®¹ã€‚å¼ºè°ƒç»“æŸç¬¦ä¼šè‡ªåŠ¨è¡¥é½ã€‚
+'é…ç½®endlå¯æŒ‡å®šæ¢è¡Œç¬¦ï¼Œä¸€èˆ¬ä¸º<br>ã€‚
 Function h2s(str As String, Optional pre_acc As String = "<font color='#ffcc33' size='12'>", Optional endl As String = "<br>") As String
 
     Dim pass As Boolean, accent As Boolean, i As Integer, c As String
     
-    str = Replace(str, pre_acc, "{")    'Ìæ»»Ç¿µ÷Ç°×º
-    str = Replace(str, endl, "|")   '·Ö¸ôĞĞ
+    str = Replace(str, pre_acc, "{")    'æ›¿æ¢å¼ºè°ƒå‰ç¼€
+    str = Replace(str, endl, "|")   'åˆ†éš”è¡Œ
     
     pass = False
     accent = False
     For i = 1 To Len(str)
         c = Mid(str, i, 1)
-        If c = "<" Then '¿ªÆôÌø¹ıÄ£Ê½
+        If c = "<" Then 'å¼€å¯è·³è¿‡æ¨¡å¼
             pass = True
-            If accent Then  'ÕıÔÚÇ¿µ÷£¬Óö¼ûµÚÒ»¸ö"<"Ôò½áÊøÇ¿µ÷£¬²¹³äÇ¿µ÷¹Ø±Õ·û
+            If accent Then  'æ­£åœ¨å¼ºè°ƒï¼Œé‡è§ç¬¬ä¸€ä¸ª"<"åˆ™ç»“æŸå¼ºè°ƒï¼Œè¡¥å……å¼ºè°ƒå…³é—­ç¬¦
                 h2s = h2s & "}"
                 accent = False
             End If
-        ElseIf c = ">" Then '¹Ø±ÕÌø¹ıÄ£Ê½
+        ElseIf c = ">" Then 'å…³é—­è·³è¿‡æ¨¡å¼
             pass = False
-        ElseIf Not pass Then    'Êä³ö×Ö·û
+        ElseIf Not pass Then    'è¾“å‡ºå­—ç¬¦
             h2s = h2s & c
-            If c = "{" Then accent = True   '´ò¿ªÇ¿µ÷¿ª¹Ø
+            If c = "{" Then accent = True   'æ‰“å¼€å¼ºè°ƒå¼€å…³
         End If
     Next
     
-    If Right(h2s, 1) = "|" Then h2s = Left(h2s, Len(h2s) - 1) 'È¥µô×îºóÒ»Î»µÄ·Ö¸ô·û
+    If Right(h2s, 1) = "|" Then h2s = Left(h2s, Len(h2s) - 1) 'å»æ‰æœ€åä¸€ä½çš„åˆ†éš”ç¬¦
     
 End Function
 
 '############################################################################################
-'2017/9/6£¬½«Ñ¡¶¨ÇøÓòºÏ²¢Îª×Ö·û´®£¬2018/10/12¿É·´ÏòÁ¬½Ó
-'@param sel: rangeÇøÓò
-'@param sign: Á¬½Ó·û£¬Ä¬ÈÏ,
-'@param reverse: ÊÇ·ñ·´ÏòÁ¬½Ó£¬Ä¬ÈÏFalse
-'@return: Á¬½ÓºóµÄ×Ö·û´®
+'2017/9/6ï¼Œå°†é€‰å®šåŒºåŸŸåˆå¹¶ä¸ºå­—ç¬¦ä¸²ï¼Œ2018/10/12å¯åå‘è¿æ¥
+'@param sel: rangeåŒºåŸŸ
+'@param sign: è¿æ¥ç¬¦ï¼Œé»˜è®¤,
+'@param reverse: æ˜¯å¦åå‘è¿æ¥ï¼Œé»˜è®¤False
+'@return: è¿æ¥åçš„å­—ç¬¦ä¸²
 Function join(sel As range, Optional ByVal sign As String = ",", Optional ByVal reverse As Boolean = False) As String
     For Each i In sel
-        If i <> "" Then  '2018/8/22 Ìí¼Ó¿Õµ¥Ôª¸ñ²»¼ÆËãµÄÂß¼­
+        If i <> "" Then  '2018/8/22 æ·»åŠ ç©ºå•å…ƒæ ¼ä¸è®¡ç®—çš„é€»è¾‘
             If reverse Then
                 join = sign & i & join
             Else
@@ -114,43 +114,43 @@ Function join(sel As range, Optional ByVal sign As String = ",", Optional ByVal 
 End Function
 
 '############################################################################################
-'2017/8/5£¬zc£¬·ÖÀëÊı¾İµÄº¯Êı¡£
-'½öÓĞÒ»¸öÔªËØÊ±£¬ÌîÊ²Ã´¶¼·µ»Ø±¾Éí¡£
-'Ò»Î¬Ôª×éÊ±£¬Ö¸ÏòµÚp1¸öÔªËØ¡£
-'¶şÎ¬Ôª×éÊ±£¬Ö¸ÏòµÚp1¸öÔª×éµÄµÚp2¸öÔªËØ¡£
+'2017/8/5ï¼Œzcï¼Œåˆ†ç¦»æ•°æ®çš„å‡½æ•°ã€‚
+'ä»…æœ‰ä¸€ä¸ªå…ƒç´ æ—¶ï¼Œå¡«ä»€ä¹ˆéƒ½è¿”å›æœ¬èº«ã€‚
+'ä¸€ç»´å…ƒç»„æ—¶ï¼ŒæŒ‡å‘ç¬¬p1ä¸ªå…ƒç´ ã€‚
+'äºŒç»´å…ƒç»„æ—¶ï¼ŒæŒ‡å‘ç¬¬p1ä¸ªå…ƒç»„çš„ç¬¬p2ä¸ªå…ƒç´ ã€‚
 Function part(ByVal str As String, Optional ByVal p1 As Byte = 1, Optional ByVal p2 As Byte = 1) As String
     
-    If p1 <= 0 Or p2 <= 0 Then part = CVErr(2042) '´íÎó£¬´òËÀµ·ÂÒÌî¸ºÊıÁãµÄ
+    If p1 <= 0 Or p2 <= 0 Then part = CVErr(2042) 'é”™è¯¯ï¼Œæ‰“æ­»æ£ä¹±å¡«è´Ÿæ•°é›¶çš„
     
     Dim tmp, tmp2, i As Byte
     
     tmp = Split(str, "|")
     
-    If UBound(tmp) = 0 Then '×î¶àÒ»Î¬Ôª×é
+    If UBound(tmp) = 0 Then 'æœ€å¤šä¸€ç»´å…ƒç»„
         tmp2 = Split(tmp(0), "+")
         If p1 <= UBound(tmp2) + 1 Then
-            part = tmp2(p1 - 1)   '·µ»ØÒ»Î¬Ôª×éµÚn¸ö
+            part = tmp2(p1 - 1)   'è¿”å›ä¸€ç»´å…ƒç»„ç¬¬nä¸ª
         Else
-            part = CVErr(2042)  '´íÎó£¬´óÓÚÔª×éÉÏ±ê
+            part = CVErr(2042)  'é”™è¯¯ï¼Œå¤§äºå…ƒç»„ä¸Šæ ‡
         End If
-    Else    '×îÉÙ¶şÎ¬Ôª×é
+    Else    'æœ€å°‘äºŒç»´å…ƒç»„
         If p1 <= UBound(tmp) + 1 Then
-            tmp2 = Split(tmp(p1 - 1), "+")  'ÌøÈëÖ¸¶¨Ôª×é
-            '###ÒÔÏÂ½á¹¹»ù±¾Í¬ÉÏ£¬ÂÔ²»Í¬
+            tmp2 = Split(tmp(p1 - 1), "+")  'è·³å…¥æŒ‡å®šå…ƒç»„
+            '###ä»¥ä¸‹ç»“æ„åŸºæœ¬åŒä¸Šï¼Œç•¥ä¸åŒ
             If p2 <= UBound(tmp2) + 1 Then
-                part = tmp2(p2 - 1)   '·µ»Ø*Ö¸¶¨*Ôª×éµÚn¸ö
+                part = tmp2(p2 - 1)   'è¿”å›*æŒ‡å®š*å…ƒç»„ç¬¬nä¸ª
             Else
-                part = CVErr(2042)  '´íÎó£¬´óÓÚÔª×éÉÏ±ê
+                part = CVErr(2042)  'é”™è¯¯ï¼Œå¤§äºå…ƒç»„ä¸Šæ ‡
             End If
-            '###ÒÔÉÏ½á¹¹»ù±¾Í¬ÉÏ£¬ÂÔ²»Í¬
+            '###ä»¥ä¸Šç»“æ„åŸºæœ¬åŒä¸Šï¼Œç•¥ä¸åŒ
         Else
-            part = CVErr(2042)    '´íÎó£¬´óÓÚ¶şÎ¬Ôª×éÉÏ±ê
+            part = CVErr(2042)    'é”™è¯¯ï¼Œå¤§äºäºŒç»´å…ƒç»„ä¸Šæ ‡
         End If
     End If
     
 End Function
 
-'2017/8/5£¬ÓÃÓÚ½«¸ñÊ½»¯×Ö·û´®Êı¾İ×ª»¯Îª¶şÎ¬Ôª×é£¬ÒıÓÃpartº¯Êı¡£
+'2017/8/5ï¼Œç”¨äºå°†æ ¼å¼åŒ–å­—ç¬¦ä¸²æ•°æ®è½¬åŒ–ä¸ºäºŒç»´å…ƒç»„ï¼Œå¼•ç”¨partå‡½æ•°ã€‚
 Private Function get_data(str As String)
     Dim arr(), tmp, tmp2
     Dim i As Byte, j As Byte
@@ -163,61 +163,61 @@ Private Function get_data(str As String)
     ReDim arr(p1, p2)
     For i = 1 To p1
         For j = 1 To p2
-            If p1 = 1 Then  'Ò»Î¬Ôª×é
+            If p1 = 1 Then  'ä¸€ç»´å…ƒç»„
                 arr(i, j) = part(str, j)
-            Else    '¶àÎ¬Ôª×é
+            Else    'å¤šç»´å…ƒç»„
                 arr(i, j) = part(str, i, j)
             End If
         Next
     Next
-    get_data = arr  '·µ»Ø¶şÎ¬Ôª×é
+    get_data = arr  'è¿”å›äºŒç»´å…ƒç»„
 End Function
 
 '############################################################################################
-'2017/8/7£¬zc£¬ĞŞ¸Ä¸ñÊ½»¯×Ö·û´®Êı¾İ£¬ÒıÓÃget_data¼°partº¯Êı¡£
-'pos±íÊ¾Ìæ»»µÚ¼¸¸öÎ»ÖÃµÄÊı¾İ¡£
-'method±íÊ¾ĞŞ¸Ä·½·¨£¬Ä¿Ç°Ö§³Ö+-*/ÒÔ¼°sub£¨Ìæ»»º­¸ÇÌæ»»¡¢Ôö¡¢É¾£©¡¢fix£¨Ç¿ÖÆ¸Ä±äÖµ£©
-'value1ÎªĞŞ¸Ä·½·¨¶ÔÓ¦µÄµÚÒ»¸öÖµ£¬+-*/¼´¶ÔÓ¦Öµ£¬sub±íÊ¾Ìæ»»Ç°×Ö·û´®
-'value2ÎªĞŞ¸Ä·½·¨¶ÔÓ¦µÄµÚ¶ş¸öÖµ£¬½ösubÊ¹ÓÃ£¬±íÊ¾Ìæ»»ºó×Ö·û´®
-'2017/9/30,ĞÂÔöfix·½·¨£¬Ç¿ÖÆ¸Ä±äÖµ£¬Ä¬ÈÏ·½·¨Îªsub
+'2017/8/7ï¼Œzcï¼Œä¿®æ”¹æ ¼å¼åŒ–å­—ç¬¦ä¸²æ•°æ®ï¼Œå¼•ç”¨get_dataåŠpartå‡½æ•°ã€‚
+'posè¡¨ç¤ºæ›¿æ¢ç¬¬å‡ ä¸ªä½ç½®çš„æ•°æ®ã€‚
+'methodè¡¨ç¤ºä¿®æ”¹æ–¹æ³•ï¼Œç›®å‰æ”¯æŒ+-*/ä»¥åŠsubï¼ˆæ›¿æ¢æ¶µç›–æ›¿æ¢ã€å¢ã€åˆ ï¼‰ã€fixï¼ˆå¼ºåˆ¶æ”¹å˜å€¼ï¼‰
+'value1ä¸ºä¿®æ”¹æ–¹æ³•å¯¹åº”çš„ç¬¬ä¸€ä¸ªå€¼ï¼Œ+-*/å³å¯¹åº”å€¼ï¼Œsubè¡¨ç¤ºæ›¿æ¢å‰å­—ç¬¦ä¸²
+'value2ä¸ºä¿®æ”¹æ–¹æ³•å¯¹åº”çš„ç¬¬äºŒä¸ªå€¼ï¼Œä»…subä½¿ç”¨ï¼Œè¡¨ç¤ºæ›¿æ¢åå­—ç¬¦ä¸²
+'2017/9/30,æ–°å¢fixæ–¹æ³•ï¼Œå¼ºåˆ¶æ”¹å˜å€¼ï¼Œé»˜è®¤æ–¹æ³•ä¸ºsub
 Function change(ByVal str As String, ByVal pos As Byte, Optional ByVal method As String = "sub", Optional ByVal value1 As String = "0", Optional ByVal value2 As String = "") As String
     
-    On Error GoTo catch '´íÎó²¶×½
+    On Error GoTo catch 'é”™è¯¯æ•æ‰
     
     Dim data, i As Byte, j As Byte
     data = get_data(str)
-    If pos > UBound(data, 2) Or pos = 0 Then GoTo catch '´íÎó£¬ÒıÓÃÎ»ÖÃ¶àÓÚ×î´óÁ¿»òÎª0
+    If pos > UBound(data, 2) Or pos = 0 Then GoTo catch 'é”™è¯¯ï¼Œå¼•ç”¨ä½ç½®å¤šäºæœ€å¤§é‡æˆ–ä¸º0
     
-    Select Case method  'ĞŞ¸ÄÊı¾İ
+    Select Case method  'ä¿®æ”¹æ•°æ®
     Case "+"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸ö¼Óvalue1
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªåŠ value1
             data(i, pos) = data(i, pos) + CDbl(value1)
         Next
     Case "-"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸ö¼õvalue1
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªå‡value1
             data(i, pos) = data(i, pos) - CDbl(value1)
         Next
     Case "*"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸ö³Ëvalue1
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªä¹˜value1
             data(i, pos) = data(i, pos) * CDbl(value1)
         Next
     Case "/"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸ö³ıvalue1
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªé™¤value1
             data(i, pos) = data(i, pos) / CDbl(value1)
         Next
     Case "sub"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸övalue1ÄÚÈİÌæ»»Îªvalue2
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªvalue1å†…å®¹æ›¿æ¢ä¸ºvalue2
             data(i, pos) = Replace(data(i, pos), value1, value2)
         Next
     Case "fix"
-        For i = 1 To UBound(data, 1)     'Ã¿×éµÚpos¸öµÄÄÚÈİÌæ»»Îªvalue1
+        For i = 1 To UBound(data, 1)     'æ¯ç»„ç¬¬posä¸ªçš„å†…å®¹æ›¿æ¢ä¸ºvalue1
             data(i, pos) = value1
         Next
     Case Else
-        change = CVErr(2042) '´íÎó£¬²»Ö§³ÖµÄ·½·¨
+        change = CVErr(2042) 'é”™è¯¯ï¼Œä¸æ”¯æŒçš„æ–¹æ³•
     End Select
     
-    For i = 1 To UBound(data, 1)   '×é×°Êı¾İ
+    For i = 1 To UBound(data, 1)   'ç»„è£…æ•°æ®
         For j = 1 To UBound(data, 2)
             change = change & data(i, j)
             If j <> UBound(data, 2) Then change = change & "+"
@@ -232,7 +232,7 @@ catch:
 
 End Function
 
-'2017/10/31 ²ğ·ÖchangeÏµÁĞº¯Êı
+'2017/10/31 æ‹†åˆ†changeç³»åˆ—å‡½æ•°
 Function cplus(ByVal str As String, ByVal pos As Byte, Optional ByVal value1 As String = "1") As String
     cplus = change(str, pos, "+", value1, value2)
 End Function
@@ -253,33 +253,33 @@ Function cfix(ByVal str As String, ByVal pos As Byte, Optional ByVal value1 As S
 End Function
 
 '############################################################################################
-'2017/10/30 ÕıÔòÆ¥ÅäÊ½ĞŞ¸Ä
-'Ä¬ÈÏÉ¸µôËùÓĞ<>ÄÚº¬ÄÚÈİ
-'<  ÆğÊ¼
-'.+?    ÈÎÒâ×Ö·û£¬·ÇÌ°À·
-'> ½áÊø
+'2017/10/30 æ­£åˆ™åŒ¹é…å¼ä¿®æ”¹
+'é»˜è®¤ç­›æ‰æ‰€æœ‰<>å†…å«å†…å®¹
+'<  èµ·å§‹
+'.+?    ä»»æ„å­—ç¬¦ï¼Œéè´ªå©ª
+'> ç»“æŸ
 Function resub(s As String, Optional pat As String = "<.+?>", Optional rep As String = "", Optional glo As Boolean = True, Optional ign As Boolean = True) As String
     Dim re As Object
     Set re = CreateObject("Vbscript.Regexp")
-    re.Global = glo 'True±íÊ¾Æ¥ÅäËùÓĞ, False±íÊ¾½öÆ¥ÅäµÚÒ»¸ö·ûºÏÏî
-    re.ignorecase = ign  'True±íÊ¾²»Çø·Ö´óĞ¡Ğ´, False±íÊ¾Çø·Ö´óĞ¡Ğ´
-    re.Pattern = pat    'Æ¥ÅäÄ£Ê½
+    re.Global = glo 'Trueè¡¨ç¤ºåŒ¹é…æ‰€æœ‰, Falseè¡¨ç¤ºä»…åŒ¹é…ç¬¬ä¸€ä¸ªç¬¦åˆé¡¹
+    re.ignorecase = ign  'Trueè¡¨ç¤ºä¸åŒºåˆ†å¤§å°å†™, Falseè¡¨ç¤ºåŒºåˆ†å¤§å°å†™
+    re.Pattern = pat    'åŒ¹é…æ¨¡å¼
     resub = re.Replace(s, rep)
     Set re = Nothing
 End Function
 
-'2017/11/9 ÕıÔòÆ¥Åä£¬È¡³öÆ¥ÅäÏî
-'Ä¬ÈÏÈ¡³ö×îºóÒ»¸ö\ÒÔºóµÄÄÚÈİ
-'which£ºÈ¡³öµÚ¼¸¸öÆ¥ÅäÏî
-'[^\\]ÒÔ\¿ªÊ¼
-'+ºó½ÓÈÎÒâ
-'$ÖÁ×Ö·û´®Î²
+'2017/11/9 æ­£åˆ™åŒ¹é…ï¼Œå–å‡ºåŒ¹é…é¡¹
+'é»˜è®¤å–å‡ºæœ€åä¸€ä¸ª\ä»¥åçš„å†…å®¹
+'whichï¼šå–å‡ºç¬¬å‡ ä¸ªåŒ¹é…é¡¹
+'[^\\]ä»¥\å¼€å§‹
+'+åæ¥ä»»æ„
+'$è‡³å­—ç¬¦ä¸²å°¾
 Function rematch(s As String, Optional pat As String = "[^\\]+$", Optional which As Integer = 0, Optional glo As Boolean = True, Optional ign As Boolean = True) As String
     Dim re As Object, mas As Object
     Set re = CreateObject("Vbscript.Regexp")
-    re.Global = glo 'True±íÊ¾Æ¥ÅäËùÓĞ, False±íÊ¾½öÆ¥ÅäµÚÒ»¸ö·ûºÏÏî
-    re.ignorecase = ign  'True±íÊ¾²»Çø·Ö´óĞ¡Ğ´, False±íÊ¾Çø·Ö´óĞ¡Ğ´
-    re.Pattern = pat    'Æ¥ÅäÄ£Ê½
+    re.Global = glo 'Trueè¡¨ç¤ºåŒ¹é…æ‰€æœ‰, Falseè¡¨ç¤ºä»…åŒ¹é…ç¬¬ä¸€ä¸ªç¬¦åˆé¡¹
+    re.ignorecase = ign  'Trueè¡¨ç¤ºä¸åŒºåˆ†å¤§å°å†™, Falseè¡¨ç¤ºåŒºåˆ†å¤§å°å†™
+    re.Pattern = pat    'åŒ¹é…æ¨¡å¼
     Set mas = re.Execute(s)
     rematch = mas(which)
     Set mas = Nothing
@@ -287,10 +287,10 @@ Function rematch(s As String, Optional pat As String = "[^\\]+$", Optional which
 End Function
 
 '############################################################################################
-'2017/10/30-31È¡µÃ×Ö·û´®Ä³×Ö·û»ò±³¾°µÄÉ«Öµ
-'rng£º×Ö·û´®ËùÔÚµ¥Ôª¸ñ£¨²»¿ÉÎª¶àµ¥Ôª¸ñÇøÓò£©
-'letter£ºÌáÈ¡µÄµ¥×ÖËùÔÚ×Ö·û´®µÚ¼¸¸ö
-'isFontColor£ºTrueÎªÅĞ¶Ï×ÖÉ«£¬FalseÎªÅĞ¶Ï±³¾°É«
+'2017/10/30-31å–å¾—å­—ç¬¦ä¸²æŸå­—ç¬¦æˆ–èƒŒæ™¯çš„è‰²å€¼
+'rngï¼šå­—ç¬¦ä¸²æ‰€åœ¨å•å…ƒæ ¼ï¼ˆä¸å¯ä¸ºå¤šå•å…ƒæ ¼åŒºåŸŸï¼‰
+'letterï¼šæå–çš„å•å­—æ‰€åœ¨å­—ç¬¦ä¸²ç¬¬å‡ ä¸ª
+'isFontColorï¼šTrueä¸ºåˆ¤æ–­å­—è‰²ï¼ŒFalseä¸ºåˆ¤æ–­èƒŒæ™¯è‰²
 Function getcolor(rng As Range, Optional letter As Integer = 1, Optional isFontColor = True) As Long
     If isFontColor Then
         getcolor = rng.Characters(letter, 1).Font.Color
@@ -299,9 +299,9 @@ Function getcolor(rng As Range, Optional letter As Integer = 1, Optional isFontC
     End If
 End Function
 
-'2017/10/30È¡³ö×Ö·û´®ÖĞÖ¸¶¨ÑÕÉ«µÄËùÓĞÎÄ×Ö
-'rng£º×Ö·û´®ËùÔÚµ¥Ôª¸ñ£¨²»¿ÉÎª¶àµ¥Ôª¸ñÇøÓò£©
-'col£ºÌáÈ¡ÑÕÉ«µÄÉ«Öµ£¨¿ÉÓÃgetcolor»ñµÃ£©
+'2017/10/30å–å‡ºå­—ç¬¦ä¸²ä¸­æŒ‡å®šé¢œè‰²çš„æ‰€æœ‰æ–‡å­—
+'rngï¼šå­—ç¬¦ä¸²æ‰€åœ¨å•å…ƒæ ¼ï¼ˆä¸å¯ä¸ºå¤šå•å…ƒæ ¼åŒºåŸŸï¼‰
+'colï¼šæå–é¢œè‰²çš„è‰²å€¼ï¼ˆå¯ç”¨getcolorè·å¾—ï¼‰
 Function ctext(rng As Range, Optional col As Long = 255) As String
     Dim l As Integer, s As String
     For l = 1 To Len(rng)
@@ -312,7 +312,7 @@ Function ctext(rng As Range, Optional col As Long = 255) As String
     Next
 End Function
 
-'2017/10/30È¡³ö×Ö·û´®ÖĞ¼Ó´ÖµÄËùÓĞÎÄ×Ö
+'2017/10/30å–å‡ºå­—ç¬¦ä¸²ä¸­åŠ ç²—çš„æ‰€æœ‰æ–‡å­—
 Function btext(rng As Range) As String
     Dim l As Integer, s As String
     For l = 1 To Len(rng)
@@ -323,7 +323,7 @@ Function btext(rng As Range) As String
     Next
 End Function
 
-'2017/10/30È¡³ö×Ö·û´®ÖĞĞ±ÌåµÄËùÓĞÎÄ×Ö
+'2017/10/30å–å‡ºå­—ç¬¦ä¸²ä¸­æ–œä½“çš„æ‰€æœ‰æ–‡å­—
 Function itext(rng As Range) As String
     Dim l As Integer, s As String
     For l = 1 To Len(rng)
@@ -334,8 +334,8 @@ Function itext(rng As Range) As String
     Next
 End Function
 
-'2017/10/30È¡³ö×Ö·û´®ÖĞÏÂ»®ÏßµÄËùÓĞÎÄ×Ö
-'isSingle£ºTrueµ¥ÏÂ»®Ïß£¬FalseË«ÏÂ»®Ïß
+'2017/10/30å–å‡ºå­—ç¬¦ä¸²ä¸­ä¸‹åˆ’çº¿çš„æ‰€æœ‰æ–‡å­—
+'isSingleï¼šTrueå•ä¸‹åˆ’çº¿ï¼ŒFalseåŒä¸‹åˆ’çº¿
 Function utext(rng As Range, Optional isSingle As Boolean = True) As String
     Dim l As Integer, s As String
     For l = 1 To Len(rng)
@@ -348,14 +348,14 @@ Function utext(rng As Range, Optional isSingle As Boolean = True) As String
 End Function
 
 '############################################################################################
-'2017/11/8×Ö·û´®Êı×é±äÎªvbaÊı×é£¨×Ô¶¯ÅĞ¶ÏÒ»Î¬»ò¶şÎ¬Êı×é£©¡£
-'sRow£ºĞĞ·Ö¸î·û
-'sCol£ºÁĞ·Ö¸î·û
-'¶şÎ¬·ÃÎÊ£ºarr(row,col)£»ÉÏ±êrow-Ubound(arr,1)¡¢col-Ubound(arr,2)
-'ËùÓĞÊı×éÏÂ±êÎª0
+'2017/11/8å­—ç¬¦ä¸²æ•°ç»„å˜ä¸ºvbaæ•°ç»„ï¼ˆè‡ªåŠ¨åˆ¤æ–­ä¸€ç»´æˆ–äºŒç»´æ•°ç»„ï¼‰ã€‚
+'sRowï¼šè¡Œåˆ†å‰²ç¬¦
+'sColï¼šåˆ—åˆ†å‰²ç¬¦
+'äºŒç»´è®¿é—®ï¼šarr(row,col)ï¼›ä¸Šæ ‡row-Ubound(arr,1)ã€col-Ubound(arr,2)
+'æ‰€æœ‰æ•°ç»„ä¸‹æ ‡ä¸º0
 Function arr(ByVal str As String, Optional sRow As String = "|", Optional sCol As String = "+")
     Dim tmp, tmp2(), tmp3, i As Byte, j As Byte
-    If Right(str, 1) = sRow Or Right(str, 1) = sCol Then str = Left(str, Len(str) - 1)  'ÈôÓĞ£¬È¥³ı×îºóÒ»¸ö¶àÓà·Ö¸î·û
+    If Right(str, 1) = sRow Or Right(str, 1) = sCol Then str = Left(str, Len(str) - 1)  'è‹¥æœ‰ï¼Œå»é™¤æœ€åä¸€ä¸ªå¤šä½™åˆ†å‰²ç¬¦
     tmp = Split(str, sRow)
     If UBound(tmp) = 0 Then
         arr = Split(str, sCol)
@@ -372,13 +372,13 @@ Function arr(ByVal str As String, Optional sRow As String = "|", Optional sCol A
     End If
     Exit Function
     
-colerror: 'ÁĞ²»ÆëµÄÇé¿ö£¬²¹Î»Îª0
+colerror: 'åˆ—ä¸é½çš„æƒ…å†µï¼Œè¡¥ä½ä¸º0
     tmp2(i, j) = 0
     Resume Next
 End Function
 
-'vbaÊı×éÊä³öÖÁexcelÇøÓò£¨×Ô¶¯ÅĞ¶ÏÒ»Î¬»ò¶şÎ¬Êı×é£©
-'rng£º¿ÉÒÔÊ¹ÓÃSheets("sheet1").[A1]£¬»òActiveCell£¬±ØĞëÓÃcallµ÷ÓÃ
+'vbaæ•°ç»„è¾“å‡ºè‡³excelåŒºåŸŸï¼ˆè‡ªåŠ¨åˆ¤æ–­ä¸€ç»´æˆ–äºŒç»´æ•°ç»„ï¼‰
+'rngï¼šå¯ä»¥ä½¿ç”¨Sheets("sheet1").[A1]ï¼Œæˆ–ActiveCellï¼Œå¿…é¡»ç”¨callè°ƒç”¨
 Function tablize(arr, rng)
     On Error GoTo dim1
     rng.Resize(UBound(arr, 1) + 1, UBound(arr, 2) + 1) = arr
@@ -390,19 +390,19 @@ End Function
 
 '############################################################################################
 '2018/9/14
-'¸ù¾İÖ¸¶¨Ìõ¼ş£¬ÕÒ³öÄ³ÇøÓòÄÚËùÓĞ·ûºÏÌõ¼şµÄµ¥Ôª¸ñÖµ£¬²¢ÒÔ·Ö¸ô·ûºÅ·Ö¸î£¬·µ»ØÒ»¸öµ¥Ôª¸ñ
-'@param range: Ìõ¼şËùÔÚµÄExcelÇøÓò
-'@param criteria: Ìõ¼ş±í´ïÊ½
-'@param join_range: ĞèÒª×éºÏµÄExcelÇøÓò
-'@param sep: ·Ö¸ô·ûºÅ£¬Ä¬ÈÏ,
-'@return: µ¥Ôª¸ñÖµ,µ¥Ôª¸ñÖµ,µ¥Ôª¸ñÖµ...
+'æ ¹æ®æŒ‡å®šæ¡ä»¶ï¼Œæ‰¾å‡ºæŸåŒºåŸŸå†…æ‰€æœ‰ç¬¦åˆæ¡ä»¶çš„å•å…ƒæ ¼å€¼ï¼Œå¹¶ä»¥åˆ†éš”ç¬¦å·åˆ†å‰²ï¼Œè¿”å›ä¸€ä¸ªå•å…ƒæ ¼
+'@param range: æ¡ä»¶æ‰€åœ¨çš„ExcelåŒºåŸŸ
+'@param criteria: æ¡ä»¶è¡¨è¾¾å¼
+'@param join_range: éœ€è¦ç»„åˆçš„ExcelåŒºåŸŸ
+'@param sep: åˆ†éš”ç¬¦å·ï¼Œé»˜è®¤,
+'@return: å•å…ƒæ ¼å€¼,å•å…ƒæ ¼å€¼,å•å…ƒæ ¼å€¼...
 Function joinif(range As range, ByRef criteria As String, join_range As range, Optional sep As String = ",")
     Dim r
     Dim result As String
     Dim arr1, arr2
     arr1 = range
     arr2 = join_range
-    For r = 1 To Application.Min(UBound(arr1), Sheets(range.Parent.Name).UsedRange.Rows.Count)  'ÔİÊ±Ö»ÓÅ»¯ÖÁ×îĞ¡ĞĞÊı
+    For r = 1 To Application.Min(UBound(arr1), Sheets(range.Parent.Name).UsedRange.Rows.Count)  'æš‚æ—¶åªä¼˜åŒ–è‡³æœ€å°è¡Œæ•°
         If arr2(r, 1) <> "" And arr1(r, 1) = criteria Then
             result = result & arr2(r, 1) & sep
         End If
