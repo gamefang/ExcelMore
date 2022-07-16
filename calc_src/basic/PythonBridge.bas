@@ -42,7 +42,7 @@ Function zpytype(value)
     zpytype = invokePyFunc(py_fn, "zpytype", Array(value), Array(), Array())
 End Function
 
-Function zjoin(v, Optional sep, Optional row_first, Optional keep_empty)
+Function zjoin(v, Optional sep As String, Optional row_first, Optional keep_empty)
 	If IsMissing(sep) Then
 		sep = ","
 	End If
@@ -53,4 +53,24 @@ Function zjoin(v, Optional sep, Optional row_first, Optional keep_empty)
 		keep_empty = 0
 	End If
     zjoin = invokePyFunc(py_fn, "zjoin", Array(v,sep,row_first,keep_empty), Array(), Array())
+End Function
+
+Function zfetch(v, Optional num As Integer, Optional sep As String)
+	If IsMissing(num) Then
+		num = 1
+	End If
+   If IsMissing(sep) Then
+		sep = ","
+	End If
+   zfetch = invokePyFunc(py_fn, "zfetch", Array(v,num,sep), Array(), Array())
+End Function
+
+Function zmod(v, val, Optional num As Integer, Optional sep As String)
+	If IsMissing(num) Then
+		num = 1
+	End If
+   If IsMissing(sep) Then
+		sep = ","
+	End If
+   zmod = invokePyFunc(py_fn, "zmod", Array(v,val,num,sep), Array(), Array())
 End Function
