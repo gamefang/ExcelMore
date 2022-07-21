@@ -38,59 +38,59 @@ End Function
 Const py_fn as String = "gamefang"
 
 ' 注册python函数为basic函数，从而可在自定义函数中使用
-Function zpytype(value)
-	zpytype = invokePyFunc(py_fn, "zpytype", Array(value), Array(), Array())
+Function zpytype(v)
+    zpytype = invokePyFunc(py_fn, "zpytype", Array(v), Array(), Array())
 End Function
 
 Function zjoin(v, Optional sep As String, Optional row_first, Optional keep_empty)
-	If IsMissing(sep) Then
-		sep = ","
-	End If
-	If IsMissing(row_first) Then
-		row_first = 1
-	End If
-	If IsMissing(keep_empty) Then
-		keep_empty = 0
-	End If
-	zjoin = invokePyFunc(py_fn, "zjoin", Array(v,sep,row_first,keep_empty), Array(), Array())
+    If IsMissing(sep) Then
+        sep = ","
+    End If
+    If IsMissing(row_first) Then
+        row_first = 1
+    End If
+    If IsMissing(keep_empty) Then
+        keep_empty = 0
+    End If
+    zjoin = invokePyFunc(py_fn, "zjoin", Array(v,sep,row_first,keep_empty), Array(), Array())
 End Function
 
 Function zfetch(v, Optional num As Integer, Optional sep As String)
-	If IsMissing(num) Then
-		num = 1
-	End If
-	If IsMissing(sep) Then
-		sep = ","
-	End If
-	zfetch = invokePyFunc(py_fn, "zfetch", Array(v,num,sep), Array(), Array())
+    If IsMissing(num) Then
+        num = 1
+    End If
+    If IsMissing(sep) Then
+        sep = ","
+    End If
+    zfetch = invokePyFunc(py_fn, "zfetch", Array(v,num,sep), Array(), Array())
 End Function
 
 Function zmod(v, val, Optional num As Integer, Optional sep As String)
-	If IsMissing(num) Then
-		num = 1
-	End If
-	If IsMissing(sep) Then
-		sep = ","
-	End If
-	zmod = invokePyFunc(py_fn, "zmod", Array(v,val,num,sep), Array(), Array())
+    If IsMissing(num) Then
+        num = 1
+    End If
+    If IsMissing(sep) Then
+        sep = ","
+    End If
+    zmod = invokePyFunc(py_fn, "zmod", Array(v,val,num,sep), Array(), Array())
 End Function
 
 Function zlen(v, Optional sep As String)
-	If IsMissing(sep) Then
-		sep = ","
-	End If
-	zlen = invokePyFunc(py_fn, "zlen", Array(v,sep), Array(), Array())
+    If IsMissing(sep) Then
+        sep = ","
+    End If
+    zlen = invokePyFunc(py_fn, "zlen", Array(v,sep), Array(), Array())
 End Function
 
 Function zsum(v, Optional num As Integer, Optional sep As String, Optional row_first)
-	If IsMissing(num) Then
-		num = 1
-	End If
-	If IsMissing(sep) Then
-		sep = ","
-	End If
-	If IsMissing(row_first) Then
-		row_first = 1
-	End If
-	zsum = invokePyFunc(py_fn, "zsum", Array(v,num,sep,row_first), Array(), Array())
+    If IsMissing(num) Then
+        num = 1
+    End If
+    If IsMissing(sep) Then
+        sep = ","
+    End If
+    If IsMissing(row_first) Then
+        row_first = 1
+    End If
+    zsum = invokePyFunc(py_fn, "zsum", Array(v,num,sep,row_first), Array(), Array())
 End Function

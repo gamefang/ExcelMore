@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# BASIC # zpytype@str # v 
 def zpytype(v) -> str:
     '''
     返回python中的type名称
@@ -7,7 +8,8 @@ def zpytype(v) -> str:
     @return: string
     '''
     return type(v).__name__
-    
+
+# BASIC # zjoin@str # v # sep@str@, # row_first@@1 # keep_empty@@0    
 def zjoin(v, sep:str = ',', row_first:bool = True, keep_empty:bool = False) -> str:
     '''
     连接一个区域各单元格的数值，返回字符串
@@ -23,6 +25,7 @@ def zjoin(v, sep:str = ',', row_first:bool = True, keep_empty:bool = False) -> s
     else:
         return v
 
+# BASIC # zfetch # v # num@int@1 # sep@str@,
 def zfetch(v:str, num:int = 1, sep:str = ','):
     '''
     从一个字符串数组中取出一个数值
@@ -47,6 +50,7 @@ def zfetch(v:str, num:int = 1, sep:str = ','):
     else:
         return float_v
 
+# BASIC # zmod@str # v # val # num@int@1 # sep@str@,
 def zmod(v:str, val, num:int = 1, sep:str = ',') -> str:
     '''
     修改一个字符串数组中的数值
@@ -65,6 +69,7 @@ def zmod(v:str, val, num:int = 1, sep:str = ',') -> str:
         return v
     return sep.join(l)
     
+# BASIC # zlen@int # v # sep@str@,
 def zlen(v:str, sep:str = ',') -> int:
     '''
     获取一个字符串数组的长度
@@ -73,6 +78,7 @@ def zlen(v:str, sep:str = ',') -> int:
     '''
     return len(v.split(sep))
     
+# BASIC # zsum # v # num@int@1 # sep@str@, # row_first@@1
 def zsum(v, num:int = 1, sep:str = ',', row_first:bool = True):
     '''
     指定一个字符串数组的区域以及列数，返回求和值(字符串为连接)
