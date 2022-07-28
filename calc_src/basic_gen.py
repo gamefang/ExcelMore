@@ -50,12 +50,6 @@ def gen_basic_code(s):
             if type_name:
                 param_str += f' As {type_name}'
         param_str += ', '
-        # if v == [None,None]:
-            # param_str += f'{k}, '
-        # elif v[0] == None or TYPE_DIC.get(v[0]) is None:    # 未填type或type不在预定义范围内
-            # param_str += f'Optional {k}, '
-        # else:
-            # param_str += f'Optional {k} As {TYPE_DIC[v[0]]}, '
     param_str = param_str[:-2] + ')'
     # 输出
     code = f'Function {func_name}{param_str}\n'
